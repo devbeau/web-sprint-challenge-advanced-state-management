@@ -5,7 +5,9 @@ import {fetchSmurfs, editSmurf, deleteSmurf} from '../actions/'
 import Card from './Card';
 
 function Cards (props) {
-    useEffect(() => {props.fetchSmurfs()}, [])
+    let {fetchSmurfs, editSmurf, deleteSmurf, smurfs} = props;
+
+    useEffect(() => {fetchSmurfs()}, [fetchSmurfs])
   
 console.log(props);
 
@@ -13,10 +15,10 @@ console.log(props);
     return (
         <div className='cards-container'>
             
-            {props.smurfs.map(smurf => {
+            {smurfs.map(smurf => {
                 console.log(smurf);
                 return (
-                    <Card key={smurf.id} smurf={smurf} editSmurf={props.editSmurf} deleteSmurf={props.deleteSmurf}/>
+                    <Card key={smurf.id} smurf={smurf} editSmurf={editSmurf} deleteSmurf={deleteSmurf}/>
                 )
             })}
         </div>
