@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-export default function Card ({smurf, editSmurf}) {
+export default function Card ({smurf, editSmurf, deleteSmurf}) {
 
     let [formValues, setFormValues] = useState(smurf);
     let [editId, setEditId] = useState('');
@@ -17,13 +17,12 @@ export default function Card ({smurf, editSmurf}) {
     }
     function onClick(event){
         if (editId === '') return setEditId(smurf.id);
-
-
+    }
+    function onDelete(event){
+        deleteSmurf(smurf);
     }
   return (
     <div className='smurf-card'>
-      {editId === '' && <button onClick={onClick}>edit</button>}
-
       {editId === smurf.id && 
         <form onSubmit={onSubmit}>
             {editId === smurf.id && <button>submit changes</button>}
@@ -55,6 +54,8 @@ export default function Card ({smurf, editSmurf}) {
         <h3>{smurf.name}</h3>
         <p>age: {smurf.age}</p>
         <p>height: {smurf.height}</p>
+        {editId === '' && <button onClick={onClick}>edit</button>}
+        <button onClick={onDelete}>delete smurf</button>
       </>
     }
     </div>
