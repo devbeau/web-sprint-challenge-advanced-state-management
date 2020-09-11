@@ -42,7 +42,7 @@ export default function reducer(state = initialState, action){
         case POST_SMURF_SUCCESS:
             return {...state,
                     isFetching: false,
-                    smurfs: [...state.smurfs, action.payload],
+                    smurfs: action.payload,
                     error: ''}
         case POST_SMURF_FAIL: 
             return {...state,

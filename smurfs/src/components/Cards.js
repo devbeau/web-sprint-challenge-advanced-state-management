@@ -14,6 +14,7 @@ console.log(props);
         <div className='cards-container'>
             
             {props.smurfs.map(smurf => {
+                console.log(smurf);
                 return (
                     <Card key={smurf.id} smurf={smurf} editSmurf={props.editSmurf} deleteSmurf={props.deleteSmurf}/>
                 )
