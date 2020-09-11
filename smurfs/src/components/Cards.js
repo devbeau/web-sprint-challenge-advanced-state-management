@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import {fetchSmurfs} from '../actions/'
+import {fetchSmurfs, editSmurf} from '../actions/'
 
 import Card from './Card';
 
@@ -15,7 +15,7 @@ console.log(props);
             
             {props.smurfs.map(smurf => {
                 return (
-                    <Card key={smurf.id} smurf={smurf} />
+                    <Card key={smurf.id} smurf={smurf} editSmurf={props.editSmurf}/>
                 )
             })}
         </div>
@@ -30,4 +30,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect((mapStateToProps), {fetchSmurfs})(Cards)
+export default connect((mapStateToProps), {fetchSmurfs, editSmurf})(Cards)

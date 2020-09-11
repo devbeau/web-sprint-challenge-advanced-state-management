@@ -5,6 +5,9 @@ import {
     POST_SMURF_START,
     POST_SMURF_SUCCESS,
     POST_SMURF_FAIL,
+    EDIT_SMURF_START,
+    EDIT_SMURF_SUCCESS,
+    EDIT_SMURF_FAIL
 } from '../actions/'
 
 const initialState = {
@@ -39,6 +42,20 @@ export default function reducer(state = initialState, action){
                     smurfs: [...state.smurfs, action.payload],
                     error: ''}
         case POST_SMURF_FAIL: 
+            return {...state,
+                    isFetching: false,
+                    error: action.payload}
+        case EDIT_SMURF_START:
+            return {...state,
+                    isFetching: true,
+                    error: ''}
+        case EDIT_SMURF_SUCCESS:
+            console.log(action.payload, state);
+            return {...state,
+                    isFetching: false,
+                    smurfs: action.payload,
+                    error: ''}
+        case EDIT_SMURF_FAIL: 
             return {...state,
                     isFetching: false,
                     error: action.payload}
